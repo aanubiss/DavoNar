@@ -1,0 +1,45 @@
+.Tabs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.NavBar nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.NavBar li {
+    display: inline-block;
+    margin: 20px;
+}
+
+.NavBar a {
+    text-decoration: none;
+    color: black;
+}
+
+.NavBar a:hover, .NavBar a:active {
+    color: #fa923f;
+}
+
+.NavBar a.active {
+    color: #fa923f;
+}
+
+.probel {
+    width: 5px;
+}
+
+.PaperLi:hover {
+    box-shadow: inset 2px 0px 22px 0px rgb(170,170,170); 
+}
+
+.PaperLi{
+    background: gray;
+}
