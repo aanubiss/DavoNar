@@ -5,11 +5,16 @@ import Paper from '@material-ui/core/Paper';
 import { Feed } from './Feed/Feed';
 
 class Imgur extends Component {
+    state = {
+        loggedIn: true
+    }
+
+
     render() {
         return (
             <div className="NavBar">
                 <header>
-                    <Paper square style={{ background: "linear-gradient(90deg, rgba(4,0,36,1) 0%, rgba(18,9,121,1) 35%, rgba(85,0,255,1) 100%)" }} elevation={3}>
+                    <Paper square style={{ background: "linear-gradient(90deg, rgba(4,0,36,1) 0%, rgba(18,9,121,1) 35%, rgba(111,0,255,1) 100%)" }} elevation={3}>
                         <nav>
                             <div>
                                 <ul className="Tabs">
@@ -19,9 +24,14 @@ class Imgur extends Component {
                                         </li>
                                     </Paper>
                                     <Paper style={{ background: "rgba(0,0,0,0)" }} elevation={0} className="probel" />
-                                    <Paper style={{ background: "rgba(0,0,0,0)" }} elevation={0.5} className="PaperLi">
-                                        <li><NavLink to='/'>Profile</NavLink></li>
-                                    </Paper>
+                                    {this.state.loggedIn ? (
+                                        <Paper style={{ background: "rgba(0,0,0,0)" }} elevation={0.5} className="PaperLi">
+                                            <li>
+                                                <NavLink to='/'>Profile</NavLink>
+                                            </li>
+                                        </Paper>
+                                    ) : null}
+
                                 </ul>
                             </div>
                             <div>
