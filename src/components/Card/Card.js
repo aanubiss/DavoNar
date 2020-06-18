@@ -5,57 +5,51 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
-import { red } from '@material-ui/core/colors';
 import ReportIcon from '@material-ui/icons/Report';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 345,
+        background: "transparent",
+        borderRadius: "15px",
     },
     media: {
         height: 0,
         paddingTop: '56.25%', // 16:9
     },
-    expand: {
-        transform: 'rotate(0deg)',
-        marginLeft: 'auto',
-        transition: theme.transitions.create('transform', {
-            duration: theme.transitions.duration.shortest,
-        }),
-    },
-    expandOpen: {
-        transform: 'rotate(180deg)',
-    },
     avatar: {
-        backgroundColor: red[500],
+        background: "linear-gradient(130deg, rgba(4,0,36,1) 0%, rgba(18,9,121,1) 35%, rgba(85,0,255,1) 100%)"
+    },
+    head:{
+        color: "#05256b",
+        background: "linear-gradient(315deg, #5b6467 0%, #8b939a 74%)"
     },
 }));
 
 export default function RecipeReviewCard(props) {
     const classes = useStyles();
 
-
     return (
         <Card className={classes.root}>
             <CardHeader
                 avatar={
-                    <Avatar aria-label="card" className={classes.avatar}>
-                        {props.avatar}
+                    <Avatar aria-label="card" src={props.avatarUrl} className={classes.avatar}>
+                        {props.avatarSign}
                     </Avatar>
                 }
                 action={
-                    <IconButton aria-label="report">
+                    <IconButton className={classes.report} aria-label="report">
                         <ReportIcon />
                     </IconButton>
                 }
                 title={props.title}
-                subheader={`by AnubisS`}
+                subheader={props.by}
+                className={classes.head}
             />
             <CardMedia
                 className={classes.media}
-                image="https://avatars.mds.yandex.net/get-pdb/1356247/63ee5ae6-2520-4006-9f10-cacb5f702ea8/s1200?webp=false"
-                title="Paella dish"
+                image={props.img}
+                title={props.imgTitle}
             />
         </Card>
     );

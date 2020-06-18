@@ -21,11 +21,11 @@
 
 .NavBar a {
     text-decoration: none;
-    color: black;
+    color: #EC9F05;
 }
 
-.NavBar a{
-    color: #fa923f;
+.add a {
+    color: #20e69d
 }
 
 .probel {
@@ -33,12 +33,9 @@
 }
 
 .PaperLi:hover {
-    box-shadow: inset 2px 0px 22px 0px rgb(170,170,170); 
+    box-shadow: inset 2px 0px 10px 0px darkgrey;
 }
 
-.PaperLi{
+.PaperLi {
     background: gray;
 }
-
-.btn-grad {background-image: linear-gradient(to right, #DA22FF 0%, #9733EE 51%, #DA22FF 100%)}
-.btn-grad:hover { background-position: right center; }
