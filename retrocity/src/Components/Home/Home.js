@@ -13,7 +13,7 @@ const Home = (props) => {
     }
     const cards = () => {
         setCurrent("cards")
-        return (<Cards props={{...props}} />)
+        return (<Cards props={props.prop} />)
     }
 
     return (

@@ -4,13 +4,19 @@ import { BrowserRouter, Route } from 'react-router-dom'
 import Home from './Components/Home/Home'
 
 class App extends React.Component {
-  state = {  }
+  state = { 
+    posts:[
+      {
+        title: "qwertgy"
+      }
+    ]
+   }
 
   render() { 
     return ( 
       <div className="App">
         <BrowserRouter>
-          <Route path='/' component={Home} />
+          <Route path='/' render={() => <Home prop = {this.state.posts} />} />
         </BrowserRouter>
       </div>
     );

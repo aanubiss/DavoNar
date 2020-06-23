@@ -3,9 +3,10 @@ import './Cards.css'
 import Card from './Card/Card';
 
 const Cards = (props) => {
+    
     return ( 
         <div className="Cards">
-            <Card imgUrl="https://avatars.mds.yandex.net/get-pdb/472427/b954f0d2-1ed7-4358-a7c4-7d1bc0d5db5e/s1200?webp=false" title="Title" by="By:" date="Date" />
+            <Card imgUrl="https://avatars.mds.yandex.net/get-pdb/472427/b954f0d2-1ed7-4358-a7c4-7d1bc0d5db5e/s1200?webp=false" title={props.props[0].title} by="By:" date="Date" />
             <Card imgUrl="https://avatars.mds.yandex.net/get-pdb/963327/e0617785-b12b-4121-a346-cb994485b334/s1200?webp=false" title="w" by="s" date="0001" />
             <Card imgUrl="https://avatars.mds.yandex.net/get-pdb/2838509/bdc1cf2c-f7ee-458d-a6c6-3c08cff4db3a/s1200?webp=false" title="e" by="d" date="0002" />
             <Card imgUrl="https://f.vividscreen.info/soft/b416a194227ccc11469f0c4171604205/Retro-Portrait-2880x1920.jpg" title="r" by="f" date="0003" />
