@@ -3,7 +3,7 @@ import './App.css'
 import { BrowserRouter, Route } from 'react-router-dom'
 import Home from './Components/Home/Home'
 
-class App extends Component {
+class App extends React.Component {
   state = {  }
 
   render() { 
