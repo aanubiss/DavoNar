@@ -1,6 +1,40 @@
 .Card{
-    width: 250px;
+    width: 260px;
     height: 330px;
-    background-color: red;
+    background-color: moccasin;
     margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    font-family: 'Cookie', cursive;
+}
+
+.mid{
+    width: 90%;
+    height: 93%;
+    background-color: transparent;
+    border: 2px solid peru;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+}
+
+.image{
+    width: 98%;
+    height: 78%;
+    border-radius: 15px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.desc{
+    width: 98%;
+    height: 18%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 }
