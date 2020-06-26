@@ -25,7 +25,7 @@
 }
 
 .btn {
-    background: #222;
+    background: transparent;
     height: 50px;
     min-width: 150px;
     border: none;

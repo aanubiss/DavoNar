@@ -1,7 +1,6 @@
-.Card{
+.Card {
     width: 260px;
     height: 330px;
-    background-color: moccasin;
     margin: 1rem;
     display: flex;
     justify-content: center;
@@ -10,10 +9,10 @@
     font-family: 'Cookie', cursive;
 }
 
-.mid{
+.mid {
     width: 90%;
     height: 93%;
-    background-color: transparent;
+    background-image: url(https://png.pngtree.com/58pic/32/59/24/28j58PICyKeJDCe458PIC7Swp_PIC2018.png);
     border: 2px solid peru;
     border-radius: 15px;
     display: flex;
@@ -21,20 +20,35 @@
     align-items: center;
     justify-content: center;
     padding: 2px;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    position: relative;
+    color: transparent;
 }
 
-.image{
-    width: 98%;
-    height: 78%;
+.mid-rot {
+    transform: rotateY(180deg);
+    color: black;
+}
+
+.image {
+    width: 95%;
+    height: 95%;
     border-radius: 15px;
     background-size: cover;
     background-repeat: no-repeat;
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
-.desc{
-    width: 98%;
-    height: 18%;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+.desc {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    transform: rotateX(30deg);
+    transform: rotateY(180deg);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }

@@ -1,20 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Card.css'
 
 const Card = (props) => {
-    return (
-        <div className='Card'>
-            <div className='mid'>
-                <div className="image" style={{ backgroundImage: `url(${props.imgUrl})` }}>
+    const [rot, setRot] = useState(false)
 
-                </div>
+    return (
+        <div className='Card' onClick={() => setRot(!rot)}>
+            <div className={["mid", rot ? "mid-rot" : ""].join(" ")}>
+                <div className="image" style={{ backgroundImage: `url(${props.imgUrl})` }} />
                 <div className='desc'>
                     <div>
-                        <h4 style={{ marginLeft: "7px", marginBottom: "3px" }}> {props.title} </h4>
-                        <h5 style={{ marginLeft: "7px" }}> {props.by} </h5>
+                        <h4> {props.title} </h4>
+                        <h5 onClick={props.profClick} style={{ textDecoration: "none", color: "black", cursor: "pointer" }} to={`/profile/${props.by}`}> By: <i> {props.by} </i> </h5>
                     </div>
                     <div>
-                        <h5 style={{ marginRight: "7px" }}> {props.date} </h5>
+                        <h5> {props.date} </h5>
                     </div>
                 </div>
             </div>

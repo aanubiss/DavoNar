@@ -3,20 +3,27 @@ import './Home.css'
 import Cards from '../Cards/Cards';
 import Profile from '../Profile/Profile';
 
+
 const Home = (props) => {
     const [Comp, setComp] = useState(null)
     const [Current, setCurrent] = useState(null)
 
-    const profile = () => {
+    const profile = (by = "me") => {
         setCurrent("profile")
-        return (<Profile />)
+        return (<Profile by={by} />)
     }
     const cards = () => {
         setCurrent("cards")
-        return (<Cards props={props.prop} />)
+        return (<Cards props={props.prop} profClick={profClick} />)
+    }
+
+    const profClick = (by) => {
+        setComp(() => profile(by))
     }
 
     return (
+
+
         <div className='Home'>
             <div className="cont">
                 {Comp}
@@ -24,7 +31,7 @@ const Home = (props) => {
 
             <div className='btnDiv'>
                 <div className="btn" onClick={() => {
-                    let audio = document.getElementById("bach")
+                    let audio = document.getElementById("chopin")
                     audio.paused ? audio.play() : audio.pause()
                 }}>
                     <span className="noselect">Mute</span>
