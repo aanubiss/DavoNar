@@ -30,7 +30,7 @@
     min-width: 150px;
     border: none;
     border-radius: 10px;
-    color: #eee;
+    color: moccasin;
     font-size: 40px;
     font-family: 'Cookie', cursive;
     position: fixed;
@@ -84,5 +84,5 @@
     width: 150px;
     left: 0;
     border-radius: 0;
-    border-bottom: 2px solid #eee;
+    border-bottom: 2px solid moccasin;
 }

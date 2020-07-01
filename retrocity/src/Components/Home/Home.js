@@ -1,28 +1,27 @@
 import React, { useState } from 'react';
 import './Home.css'
 import Cards from '../Cards/Cards';
-import Profile from '../Profile/Profile';
-
+import Profile from '../Profile/ProfileR';
 
 const Home = (props) => {
     const [Comp, setComp] = useState(null)
     const [Current, setCurrent] = useState(null)
 
-    const profile = (by = "me") => {
+    const profile = (by = props.user.userId) => {
         setCurrent("profile")
-        return (<Profile by={by} />)
-    }
-    const cards = () => {
-        setCurrent("cards")
-        return (<Cards props={props.prop} profClick={profClick} />)
+        return (<Profile profHandler={() => profile()} by={by} posts={props.posts.filter(post => post.userId._id === by._id)} />)
     }
 
-    const profClick = (by) => {
-        setComp(() => profile(by))
+    const cards = () => {
+        setCurrent("cards")
+        return (<Cards props={props.posts} profClick={profClick} />)
+    }
+
+    const profClick = (user) => {
+        setComp(() => profile(user))
     }
 
     return (
-
 
         <div className='Home'>
             <div className="cont">

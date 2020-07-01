@@ -7,6 +7,7 @@
     align-items: center;
     border-radius: 10px;
     font-family: 'Cookie', cursive;
+    cursor: default;
 }
 
 .mid {
@@ -47,8 +48,12 @@
     position: absolute;
     top: 15px;
     left: 20px;
-    transform: rotateX(30deg);
     transform: rotateY(180deg);
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    text-align: end;
+}
+
+.mes{
+    transform: rotateZ(10deg);
 }

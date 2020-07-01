@@ -6,7 +6,7 @@ import "animate.css/animate.min.css";
 
 const Cards = (props) => {
     const cards = props.props
-
+    
     return (
         <div className="Cards">
             {cards.map((i, index) => (
@@ -17,7 +17,7 @@ const Cards = (props) => {
                     initiallyVisible={false}
                     key={index}
                 >
-                    <Card profClick={() => props.profClick(i.by)} imgUrl={i.imgUrl} title={i.title} by={i.by} date={i.date} />
+                    <Card profClick={() => props.profClick(i.userId)} imgUrl={i.imgUrl} title={i.title} by={i.userId.name} date={i.date} />
                 </ScrollAnimation>
             ))}
         </div>
