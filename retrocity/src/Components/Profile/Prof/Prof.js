@@ -1,10 +1,9 @@
 import React from 'react';
-import './Prof.css'
 import ScrollAnimation from 'react-animate-on-scroll';
-import "animate.css/animate.min.css";
 import Card from '../../Cards/Card/Card'
 import MyModal from '../../UI/Modal/MyModal'
-
+import "animate.css/animate.min.css";
+import './Prof.css'
 
 const Prof = (props) => {
     const token = localStorage.getItem("token")
@@ -44,7 +43,7 @@ const Prof = (props) => {
                 {token ? (
                     <div className='addPost'>
                         <p style={{ color: "red", fontSize: "30px" }} onClick={() => setisOpen(true)}>+</p>
-                        <MyModal open={isOpen} close={() => setisOpen(false)} body={body} />
+                        {/* <MyModal open={isOpen} close={() => setisOpen(false)} body={body} /> */}
                     </div>
                 ) : null}
             </div>
