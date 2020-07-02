@@ -63,7 +63,19 @@ class App extends React.Component {
       const data = await fetch("https://fierce-spire-06699.herokuapp.com/posts")
       const fetchedData = await data.json()
       console.log(fetchedData);
+      this.setState({posts: fetchedData })
+    } catch (e) {
 
+    }
+  }
+
+  async fetchMyProfile() {
+    try {
+      const myProf = await fetch('https://firece-spire-06699.herokuapp.com/user/auth/profile',{
+        method: "GET"
+      })
+      const userId = await myProf.json()
+      this.setState({ myProf: { userId: userId } })
     } catch (e) {
 
     }

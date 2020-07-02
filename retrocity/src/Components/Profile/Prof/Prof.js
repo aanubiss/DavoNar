@@ -3,27 +3,14 @@ import './Prof.css'
 import ScrollAnimation from 'react-animate-on-scroll';
 import "animate.css/animate.min.css";
 import Card from '../../Cards/Card/Card'
+import MyModal from '../../UI/Modal/MyModal'
 
-import SimpleModal from '../../UI/modal/Modal';
-import PostUploader from './postUploader/PostUploader'
 
 const Prof = (props) => {
     const token = localStorage.getItem("token")
     const prof = props.prof
     const cards = props.posts
-
-
-    const [open, setOpen] = React.useState(false)
-
-    const handleOpen = () => {
-        setOpen(true)
-    }
-
-    const handleClose = () => {
-        setOpen(false)
-    }
-
-    const body = <PostUploader />
+    const [isOpen, setisOpen] = React.useState(false)
 
     // const addPost = async(value) => {
     //     const token = localStorage.getItem('token');
@@ -37,6 +24,12 @@ const Prof = (props) => {
     //     })
     // }
 
+    const body = (
+        <div>
+            <p>MyModal</p>
+        </div>
+    )
+
     return (
         <div className="Prof">
             <div className="ProfSide">
@@ -45,17 +38,13 @@ const Prof = (props) => {
                 </div>
                 <div className="Description">
                     <h3> {prof.name} </h3>
+                    <h3> {prof.date} </h3>
+                    <h3> {prof.email} </h3>
                 </div>
                 {token ? (
-                    <div
-                        className='addPost'>
-                        <p
-                            className='para'
-                            onClick={handleOpen}>+</p>
-                        <SimpleModal
-                            handleClose={handleClose}
-                            open={open}
-                            body={body} />
+                    <div className='addPost'>
+                        <p style={{ color: "red", fontSize: "30px" }} onClick={() => setisOpen(true)}>+</p>
+                        <MyModal open={isOpen} close={() => setisOpen(false)} body={body} />
                     </div>
                 ) : null}
             </div>

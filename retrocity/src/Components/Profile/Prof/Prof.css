@@ -20,6 +20,7 @@
     justify-content: space-evenly;
     align-items: flex-start;
     padding: 1rem;
+    overflow: scroll;
 }
 
 .Image {
@@ -36,23 +37,4 @@
 .Description {
     width: 100%;
     height: 72.5%;
-}
-
-.addPost {
-    width: 250px !important;
-    height: 195px !important;
-    box-shadow: 0px 0px 33px 8px rgba(0, 0, 0, 0.75);
-    margin: 40px;
-    align-items: center;
-    padding: 2px;
-    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR67_iYFsmMnsZ-xVc-ZACaMZEGLBtfvKs1Iw&usqp=CAU);
-    justify-content: center;
-    text-align: center;
-    font-weight: bolder;
-    font-size: 50px;
-}
-
-.para {
-    height: 80%;
-    margin-top: 60px;
 }
