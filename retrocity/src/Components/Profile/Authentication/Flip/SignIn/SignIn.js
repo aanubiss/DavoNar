@@ -18,7 +18,7 @@ export default class SignIN extends React.Component {
 
     async signIn(value) {
         try {
-            const data = await fetch("https://fierce-spire-06699.herokuapp.com/user/auth/signin", {
+            const data = await fetch("https://still-sands-43004.herokuapp.com/user/auth/signIn", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

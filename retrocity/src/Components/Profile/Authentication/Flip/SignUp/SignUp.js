@@ -24,7 +24,7 @@ export default class SignUp extends Component {
 
     async signUp(value) {
         try {
-            const data = await fetch("https://fierce-spire-06699.herokuapp.com/user/auth/signup", {
+            const data = await fetch("https://still-sands-43004.herokuapp.com/user/auth/signUp", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
