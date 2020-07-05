@@ -7,7 +7,7 @@ const Profile = (props) => {
     
     if (token) {
         return (
-            <Prof prof={props.by} posts={props.posts} />
+            <Prof myProf={props.myProf} prof={props.by} posts={props.posts} />
         )
     } else {
         return (

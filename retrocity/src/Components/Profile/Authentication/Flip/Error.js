@@ -8,7 +8,7 @@ const Error = ({ touched, message }) => {
     if (message) {
         return <div style={{color: 'red', fontSize: '10px', margin: '0', padding: '0'}}>{message}</div>
     }
-    return <div>&nbsp;</div>
+    return null
 }
 
 export default Error

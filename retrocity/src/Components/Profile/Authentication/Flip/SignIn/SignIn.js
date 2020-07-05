@@ -16,6 +16,10 @@ const validationSchema = Yup.object().shape({
 
 export default class SignIN extends React.Component {
 
+    state={
+        error: null
+    }
+
     async signIn(value) {
         try {
             const data = await fetch("https://still-sands-43004.herokuapp.com/user/auth/signIn", {
