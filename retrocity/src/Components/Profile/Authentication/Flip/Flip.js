@@ -10,11 +10,12 @@ const Flip = (props) => {
   return (
     <div
       className={"flip-card"}>
-      <img 
-      alt="Problems?"
-      onClick={() => setRotate(!rot)} rot={rot} 
-      style={{width: '100px', height: '80px'}}
-      src={rot ? 'https://cdn.dribbble.com/users/1986212/screenshots/6144741/sign-in---character-for-animation.gif' : 'https://cdn-images-1.medium.com/max/1200/1*1OxDpSqmW3ugfAzp_i4OgA.gif'}/>
+      <img
+        alt="Problems?"
+        onClick={() => setRotate(!rot)}
+        rot={rot.toString()}
+        style={{ width: '100px', height: '80px' }}
+        src={rot ? 'https://cdn.dribbble.com/users/1986212/screenshots/6144741/sign-in---character-for-animation.gif' : 'https://cdn-images-1.medium.com/max/1200/1*1OxDpSqmW3ugfAzp_i4OgA.gif'} />
       <br />
       <div
         className={rot ? ['flip-card-inner', 'rot'].join(' ') : "flip-card-inner"}>

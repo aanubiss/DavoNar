@@ -16,8 +16,8 @@ const validationSchema = Yup.object().shape({
 
 export default class SignIN extends React.Component {
 
-    state={
-        error: null
+    state = {
+        error: null,
     }
 
     async signIn(value) {
@@ -42,6 +42,7 @@ export default class SignIN extends React.Component {
     }
 
     render() {
+        console.log(this.props);
         return (
             <Formik
                 initialValues={{ email: '', password: '' }}
@@ -65,7 +66,6 @@ export default class SignIN extends React.Component {
                             <div className="container">
                                 <label htmlFor="email"><b>Email</b></label>
                                 <input
-                                    id="text"
                                     type="email"
                                     placeholder="Enter email"
                                     name="email"
@@ -86,10 +86,10 @@ export default class SignIN extends React.Component {
                                 <Error touched={touched.password} message={errors.password} />
                                 <button type="submit">
                                     Login
-                        </button>
+                                </button>
                             </div>
-                        </form>)}
-
+                        </form>
+                    )}
             </Formik>
         );
     }

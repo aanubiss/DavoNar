@@ -65,7 +65,6 @@ export default class SignUp extends Component {
                             <div className="container">
                                 <label htmlFor="text"><b>Name</b></label>
                                 <input
-                                    id="text"
                                     type="text"
                                     placeholder="Enter your name"
                                     name="name"
@@ -77,7 +76,6 @@ export default class SignUp extends Component {
 
                                 <label htmlFor="email"><b>Email</b></label>
                                 <input
-                                    id="text"
                                     type="email"
                                     placeholder="Enter email"
                                     name="email"

@@ -9,7 +9,7 @@ const Home = (props) => {
 
     const profile = (by = props.user.userId) => {
         setCurrent("profile")
-        return (<Profile profHandler={() => profile()} myProf={props.user.userId} by={by} posts={props.posts.filter(post => post.userId._id === by._id)} />)
+        return (<Profile profHandler={() => cards()} myProf={props.user.userId} by={by} posts={props.posts.filter(post => post.userId._id === by._id)} />)
     }
 
     const cards = () => {
