@@ -100,7 +100,7 @@ class App extends React.Component {
   async fetchData() {
     try {
       const token = await localStorage.getItem("token")
-      const data = await fetch("https://still-sands-43004.herokuapp.com/posts/", {
+      const data = await fetch("https://still-sands-43004.herokuapp.com/posts", {
         method: "GET",
         headers: {
           "auth-token": token

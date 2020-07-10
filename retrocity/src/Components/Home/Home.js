@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Home.css'
 import Cards from '../Cards/Cards';
-import Profile from '../Profile/ProfileR';
+import ProfileR from '../Profile/ProfileR';
 
 const Home = (props) => {
     const [Comp, setComp] = useState(null)
@@ -9,7 +9,7 @@ const Home = (props) => {
 
     const profile = (by = props.user.userId) => {
         setCurrent("profile")
-        return (<Profile profHandler={() => cards()} myProf={props.user.userId} by={by} posts={props.posts.filter(post => post.userId._id === by._id)} />)
+        return (<ProfileR profHandler={setComp.bind(this, cards)} myProf={props.user.userId} by={by} posts={props.posts.filter(post => post.userId._id === by._id)} />)
     }
 
     const cards = () => {

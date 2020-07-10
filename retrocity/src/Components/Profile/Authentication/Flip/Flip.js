@@ -10,17 +10,17 @@ const Flip = (props) => {
   return (
     <div
       className={"flip-card"}>
-      <img
+      <button
         alt="Problems?"
         onClick={() => setRotate(!rot)}
         rot={rot.toString()}
-        style={{ width: '100px', height: '80px' }}
-        src={rot ? 'https://cdn.dribbble.com/users/1986212/screenshots/6144741/sign-in---character-for-animation.gif' : 'https://cdn-images-1.medium.com/max/1200/1*1OxDpSqmW3ugfAzp_i4OgA.gif'} />
+        style={{ width: '120px', height: '80px', fontSize: "20px" }}
+        > {rot ? "Log In" : "Sign Up"} </button>
       <br />
       <div
         className={rot ? ['flip-card-inner', 'rot'].join(' ') : "flip-card-inner"}>
         <div className="flip-card-front">
-          <SignIN profHandler={() => props.profHandler()} />
+          <SignIN profHandler={props.profHandler} />
         </div>
         <div className="flip-card-back">
           <SignUp />

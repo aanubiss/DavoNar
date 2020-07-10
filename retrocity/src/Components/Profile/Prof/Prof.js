@@ -40,7 +40,10 @@ const Prof = (props) => {
                 <h3 id='Email'>( {prof.email} )</h3>
             </div>
             <h3 id="Count"> Posts: {cards.length} </h3>
-
+            {props.myProf._id === prof._id ? <h3 id="signOut" onClick={() => {
+                localStorage.removeItem("token");
+                props.profHandler()
+            }}>Sign Out</h3> : null}
 
             <div className="PostSide">
 
@@ -56,62 +59,64 @@ const Prof = (props) => {
                     </ScrollAnimation>
                 ))}
             </div>
-            {props.myProf._id === prof._id ? (
-                <div className='addPost'>
-                    <Formik
-                        initialValues={{ title: "", imgUrl: "" }}
-                        validationSchema={validationSchema}
-                        onSubmit={(values, { setSubmitting, resetForm }) => {
-                            setSubmitting(true)
-                            addPost(values)
-                            resetForm()
-                            setSubmitting(false)
-                        }}>
-                        {({
-                            values,
-                            errors,
-                            touched,
-                            handleChange,
-                            handleBlur,
-                            handleSubmit
-                        }) => (
-                                <form
-                                    className='addPostForm'
-                                    onSubmit={handleSubmit}>
-                                    <div className="addPostForm">
-                                        <div>
-                                            <label htmlFor="text"><b>Title:</b></label>
-                                            <input
-                                                id="text"
-                                                type="text"
-                                                placeholder="Enter post title"
-                                                name="title"
-                                                onChange={handleChange}
-                                                onBlur={handleBlur}
-                                                value={values.title}
-                                                className={touched.title && errors.title ? 'has-error' : null} />
-                                            <Error touched={touched.title} message={errors.title} />
+            {
+                props.myProf._id === prof._id ? (
+                    <div className='addPost'>
+                        <Formik
+                            initialValues={{ title: "", imgUrl: "" }}
+                            validationSchema={validationSchema}
+                            onSubmit={(values, { setSubmitting, resetForm }) => {
+                                setSubmitting(true)
+                                addPost(values)
+                                resetForm()
+                                setSubmitting(false)
+                            }}>
+                            {({
+                                values,
+                                errors,
+                                touched,
+                                handleChange,
+                                handleBlur,
+                                handleSubmit
+                            }) => (
+                                    <form
+                                        className='addPostForm'
+                                        onSubmit={handleSubmit}>
+                                        <div className="addPostForm">
+                                            <div>
+                                                <label htmlFor="text"><b>Title:</b></label>
+                                                <input
+                                                    id="text"
+                                                    type="text"
+                                                    placeholder="Enter post title"
+                                                    name="title"
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
+                                                    value={values.title}
+                                                    className={touched.title && errors.title ? 'has-error' : null} />
+                                                <Error touched={touched.title} message={errors.title} />
+                                            </div>
+                                            <div>
+                                                <label htmlFor="url"><b>Image URL:</b></label>
+                                                <input
+                                                    id="text"
+                                                    type="text"
+                                                    placeholder="Enter image URL"
+                                                    name="imgUrl"
+                                                    onChange={handleChange}
+                                                    onBlur={handleBlur}
+                                                    value={values.imgUrl}
+                                                    className={`input ${touched.title && errors.title ? 'has-error' : null}`} />
+                                                <Error touched={touched.imgUrl} message={errors.imgUrl} />
+                                            </div>
+                                            <button type="submit" className="addBtn">Add Post</button>
                                         </div>
-                                        <div>
-                                            <label htmlFor="url"><b>Image URL:</b></label>
-                                            <input
-                                                id="text"
-                                                type="text"
-                                                placeholder="Enter image URL"
-                                                name="imgUrl"
-                                                onChange={handleChange}
-                                                onBlur={handleBlur}
-                                                value={values.imgUrl}
-                                                className={`input ${touched.title && errors.title ? 'has-error' : null}`} />
-                                            <Error touched={touched.imgUrl} message={errors.imgUrl} />
-                                        </div>
-                                        <button type="submit" className="addBtn">Add Post</button>
-                                    </div>
-                                </form>
-                            )}
-                    </Formik>
-                </div>
-            ) : null}
+                                    </form>
+                                )}
+                        </Formik>
+                    </div>
+                ) : null
+            }
         </div >
     );
 }

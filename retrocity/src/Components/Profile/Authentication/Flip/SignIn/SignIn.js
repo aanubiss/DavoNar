@@ -17,8 +17,10 @@ const validationSchema = Yup.object().shape({
 export default class SignIN extends React.Component {
 
     state = {
-        error: null,
+        error: ''
     }
+
+    redir = this.props.profHandler.bind(this)
 
     async signIn(value) {
         try {
@@ -34,6 +36,7 @@ export default class SignIN extends React.Component {
                 this.setState({ error: fetchedData.message })
             } else {
                 console.log(fetchedData);
+                this.redir()
                 localStorage.setItem('token', fetchedData.auth_token);
             }
         } catch (e) {
@@ -42,7 +45,6 @@ export default class SignIN extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         return (
             <Formik
                 initialValues={{ email: '', password: '' }}
@@ -84,6 +86,7 @@ export default class SignIN extends React.Component {
                                     value={values.password}
                                     className={touched.password && errors.password ? 'has-error' : null} />
                                 <Error touched={touched.password} message={errors.password} />
+                                {this.state.error ? <p style={{ color: "red", fontSize: "15px" }}><strong>{this.state.error}</strong></p> : null}
                                 <button type="submit">
                                     Login
                                 </button>

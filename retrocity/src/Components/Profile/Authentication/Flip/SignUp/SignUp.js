@@ -18,7 +18,7 @@ const validationSchema = Yup.object().shape({
 })
 
 export default class SignUp extends Component {
-    state={
+    state = {
         error: null
     }
 
@@ -94,10 +94,10 @@ export default class SignUp extends Component {
                                     value={values.password}
                                     className={touched.password && errors.password ? 'has-error' : null} />
                                 <Error touched={touched.password} message={errors.password} />
+                                {this.state.error ? <p style={{ color: "red", fontSize: "15px" }}><strong>{this.state.error}</strong></p> : null}
                                 <button type="submit">
                                     Sign Up
-                        </button>
-                                {this.state.error ? <p> {this.state.error} </p> : null}
+                                </button>
                             </div>
                         </form>)}
 
