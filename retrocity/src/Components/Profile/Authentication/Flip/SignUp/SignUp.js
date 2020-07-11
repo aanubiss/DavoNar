@@ -17,91 +17,85 @@ const validationSchema = Yup.object().shape({
         .required('required'),
 })
 
-export default class SignUp extends Component {
-    state = {
-        error: null
+const SignUp = () => {
+
+    const [error, setError] = React.useState('')
+
+    const signUp = async (val) => {
+        const data = await fetch('https://still-sands-43004.herokuapp.com/user/auth/signUp', {
+            method: "POST",
+            headers: {
+                'Content-Type': "application/json"
+            },
+            body: JSON.stringify(val)
+        })
+        const fetchedData = await data.json()
+        console.log(fetchedData);
     }
 
-    async signUp(value) {
-        try {
-            const data = await fetch("https://still-sands-43004.herokuapp.com/user/auth/signUp", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(value)
-            })
-            const fetchedData = await data.json()
-            if (fetchedData.message) {
-                this.setState({ error: fetchedData.message })
-                this.props.profHandler()
-            }
-        } catch (e) {
-            this.setState({ error: "Something went wrong" })
-        }
-    }
+    return (
+        <Formik
+            initialValues={{ email: '', password: '', name: '' }}
+            validationSchema={validationSchema}
+            onSubmit={(values, { setSubmitting, resetForm }) => {
+                setSubmitting(true)
+                signUp(values)
+                resetForm()
+                setSubmitting(false)
+            }}>
+            {({
+                values,
+                errors,
+                touched,
+                handleChange,
+                handleBlur,
+                handleSubmit }) => (
+                    <form
+                        className="modal-content"
+                        onSubmit={handleSubmit}>
+                        <div className="container">
+                            <label htmlFor="text"><b>Name</b></label>
+                            <input
+                                id='name'
+                                type="text"
+                                placeholder="Enter your name"
+                                name="name"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.name}
+                                className={touched.name && errors.name ? 'has-error' : null} />
+                            <Error touched={touched.name} message={errors.name} />
 
-    render() {
-        return (
-            <Formik
-                initialValues={{ email: '', password: '', name: '' }}
-                validationSchema={validationSchema}
-                onSubmit={(values, { setSubmitting, resetForm }) => {
-                    setSubmitting(true)
-                    this.signUp(values)
-                    resetForm()
-                    setSubmitting(false)
-                }}>
-                {({
-                    values,
-                    errors,
-                    touched,
-                    handleChange,
-                    handleBlur,
-                    handleSubmit }) => (
-                        <form
-                            className="modal-content"
-                            onSubmit={handleSubmit}>
-                            <div className="container">
-                                <label htmlFor="text"><b>Name</b></label>
-                                <input
-                                    type="text"
-                                    placeholder="Enter your name"
-                                    name="name"
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.name}
-                                    className={touched.name && errors.name ? 'has-error' : null} />
-                                <Error touched={touched.name} message={errors.name} />
-
-                                <label htmlFor="email"><b>Email</b></label>
-                                <input
-                                    type="email"
-                                    placeholder="Enter email"
-                                    name="email"
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.email}
-                                    className={touched.email && errors.email ? 'has-error' : null} />
-                                <Error touched={touched.email} message={errors.email} />
-                                <label htmlFor="password"><b>Password</b></label>
-                                <input
-                                    type="password"
-                                    placeholder="Enter Password"
-                                    name="password"
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.password}
-                                    className={touched.password && errors.password ? 'has-error' : null} />
-                                <Error touched={touched.password} message={errors.password} />
-                                {this.state.error ? <p style={{ color: "red", fontSize: "15px" }}><strong>{this.state.error}</strong></p> : null}
-                                <button type="submit">
-                                    Sign Up
-                                </button>
-                            </div>
-                        </form>)}
-
-            </Formik>
-        )
-    }
+                            <label htmlFor="email"><b>Email</b></label>
+                            <input
+                                id='email'
+                                type="email"
+                                placeholder="Enter email"
+                                name="email"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.email}
+                                className={touched.email && errors.email ? 'has-error' : null} />
+                            <Error touched={touched.email} message={errors.email} />
+                            <label htmlFor="password"><b>Password</b></label>
+                            <input
+                                id='password'
+                                type="password"
+                                placeholder="Enter Password"
+                                name="password"
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.password}
+                                className={touched.password && errors.password ? 'has-error' : null} />
+                            <Error touched={touched.password} message={errors.password} />
+                            {error ? <p style={{ color: "red", fontSize: "15px" }}><strong>{error}</strong></p> : null}
+                            <button type="submit">
+                                Sign Up
+                            </button>
+                        </div>
+                    </form>)}
+        </Formik>
+    )
 }
+
+export default SignUp

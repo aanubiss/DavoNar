@@ -13,7 +13,7 @@ const Prof = (props) => {
 
     const addPost = async (value) => {
         const token = localStorage.getItem('token');
-        const data = await fetch('localhost:3000/posts/add', {
+        const data = await fetch('https://still-sands-43004.herokuapp.com/posts/add', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ const Prof = (props) => {
                         initiallyVisible={false}
                         key={index}
                     >
-                        <Card imgUrl={i.imgUrl} title={i.title} by={i.userId.name} date={i.date} />
+                        <Card deletable={i._id} imgUrl={i.imgUrl} title={i.title} by={i.userId.name} date={i.date} />
                     </ScrollAnimation>
                 ))}
             </div>
@@ -86,7 +86,7 @@ const Prof = (props) => {
                                             <div>
                                                 <label htmlFor="text"><b>Title:</b></label>
                                                 <input
-                                                    id="text"
+                                                    id="title"
                                                     type="text"
                                                     placeholder="Enter post title"
                                                     name="title"
@@ -99,7 +99,7 @@ const Prof = (props) => {
                                             <div>
                                                 <label htmlFor="url"><b>Image URL:</b></label>
                                                 <input
-                                                    id="text"
+                                                    id="imgUrl"
                                                     type="text"
                                                     placeholder="Enter image URL"
                                                     name="imgUrl"
