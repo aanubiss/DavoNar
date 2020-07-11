@@ -8,6 +8,7 @@ const Home = (props) => {
     const [Current, setCurrent] = useState(null)
 
     const profile = (by = props.user.userId) => {
+        props.refPrfo()
         setCurrent("profile")
         return (<ProfileR profHandler={setComp.bind(this, cards)} myProf={props.user.userId} by={by} posts={props.posts.filter(post => post.userId._id === by._id)} />)
     }

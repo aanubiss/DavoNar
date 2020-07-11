@@ -57,3 +57,9 @@
 .mes{
     transform: rotateZ(10deg);
 }
+
+#del{
+    position: absolute;
+    bottom: -225px;
+    right: 5px;
+}

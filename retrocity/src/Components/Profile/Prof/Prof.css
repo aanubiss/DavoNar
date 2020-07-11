@@ -18,6 +18,7 @@
 
 .PostSide {
     width: 100%;
+    min-height: 70%;
     height: auto;
     display: flex;
     flex-direction: row;

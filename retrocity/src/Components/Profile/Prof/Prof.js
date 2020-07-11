@@ -9,19 +9,42 @@ import './Prof.css'
 
 const Prof = (props) => {
     const prof = props.prof
-    const cards = props.posts
+    const [cards, setCards] = React.useState(props.posts)
 
     const addPost = async (value) => {
-        const token = localStorage.getItem('token');
-        const data = await fetch('https://still-sands-43004.herokuapp.com/posts/add', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'auth-token': token
-            },
-            body: JSON.stringify(value)
-        })
-        console.log(data);
+        try {
+            const token = localStorage.getItem('token');
+            await fetch('https://still-sands-43004.herokuapp.com/posts/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'auth-token': token
+                },
+                body: JSON.stringify(value)
+            })
+            value.userId = prof
+            setCards([...cards, value])
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    const deleteEl = async (id) => {
+        try {
+            const token = localStorage.getItem('token')
+            const delData = await fetch(`https://still-sands-43004.herokuapp.com/posts/del/${id}`, {
+                method: "DELETE",
+                headers: {
+                    'auth-token': token
+                }
+            })
+            const del = await delData.json()
+            console.log(del);
+            const newState = cards.filter((card) => card._id !== id)
+            setCards(newState)
+        } catch (e) {
+            console.log(e);
+        }
     }
 
     const validationSchema = Yup.object().shape({
@@ -46,7 +69,7 @@ const Prof = (props) => {
             }}>Sign Out</h3> : null}
 
             <div className="PostSide">
-
+                {cards.length === 0 ? <p style={{ margin: "auto" }}>You have no posts</p> : null}
                 {cards.map((i, index) => (
                     <ScrollAnimation
                         animateIn={index % 3 === 0 ? "fadeInLeftBig" : index % 3 === 2 ? "fadeInRightBig" : "fadeIn"}
@@ -55,7 +78,7 @@ const Prof = (props) => {
                         initiallyVisible={false}
                         key={index}
                     >
-                        <Card deletable={i._id} imgUrl={i.imgUrl} title={i.title} by={i.userId.name} date={i.date} />
+                        <Card delEl={deleteEl.bind(this, i._id)} imgUrl={i.imgUrl} title={i.title} by={i.userId.name} />
                     </ScrollAnimation>
                 ))}
             </div>

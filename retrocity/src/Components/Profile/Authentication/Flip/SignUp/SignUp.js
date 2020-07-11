@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup'
 import './SignUp.css'
@@ -22,15 +22,19 @@ const SignUp = () => {
     const [error, setError] = React.useState('')
 
     const signUp = async (val) => {
-        const data = await fetch('https://still-sands-43004.herokuapp.com/user/auth/signUp', {
-            method: "POST",
-            headers: {
-                'Content-Type': "application/json"
-            },
-            body: JSON.stringify(val)
-        })
-        const fetchedData = await data.json()
-        console.log(fetchedData);
+        try {
+            const data = await fetch('https://still-sands-43004.herokuapp.com/user/auth/signUp', {
+                method: "POST",
+                headers: {
+                    'Content-Type': "application/json"
+                },
+                body: JSON.stringify(val)
+            })
+            const fetchedData = await data.json()
+            console.log(fetchedData);
+        } catch (e) {
+            setError(e)
+        }
     }
 
     return (

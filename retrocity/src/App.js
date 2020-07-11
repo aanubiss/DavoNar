@@ -7,11 +7,11 @@ class App extends React.Component {
 
   state = {
     myProf: {
-        userId: {
-          _id: "",
-          name: '',
-          email: '',
-        },
+      userId: {
+        _id: "",
+        name: '',
+        email: '',
+      },
     },
     posts: [
       //   {
@@ -93,21 +93,19 @@ class App extends React.Component {
     ]
   }
 
-  async fetchData() {
+  fetchData = async () => {
     try {
       const data = await fetch("https://still-sands-43004.herokuapp.com/posts")
       const fetchedData = await data.json()
-      console.log(fetchedData);
       this.setState({ posts: fetchedData })
     } catch (e) {
       console.log(e);
     }
   }
 
-  async fetchMyProfile() {
+  fetchMyProfile = async () => {
     try {
       const token = await localStorage.getItem("token")
-      console.log(token);
       const myProf = await fetch('https://still-sands-43004.herokuapp.com/user/auth/profile', {
         method: "POST",
         headers: {
@@ -122,17 +120,15 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    this.fetchMyProfile()
     this.fetchData()
-    if (localStorage.getItem("token")) {
-      this.fetchMyProfile()
-    }
   }
 
   render() {
     return (
       <div className="App">
         <BrowserRouter>
-          <Route path='/' render={() => <Home posts={this.state.posts} user={this.state.myProf} />} />
+          <Route path='/' render={() => <Home posts={this.state.posts} user={this.state.myProf} refPrfo={this.fetchMyProfile} />} />
         </BrowserRouter>
       </div>
     );
